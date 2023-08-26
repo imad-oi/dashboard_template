@@ -108,7 +108,7 @@ function App() {
             className="bg-blue-300 text-white text-sm font-semibold rounded-md px-4 py-2"
             onClick={() => setisDarkMode((prev) => !prev)}
           >
-            {isDarkMode ? "Light Mode" : "Dark Mode"}
+            {!isDarkMode ? "Light Mode" : "Dark Mode"}
           </button>
         </div>
 
