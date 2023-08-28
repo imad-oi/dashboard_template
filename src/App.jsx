@@ -1,15 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const control = "./src/assets/control.png";
 
 function App() {
-  const [openSidebar, setopenSidebar] = useState(true);
-
-  const [isDarkMode, setisDarkMode] = useState(false);
-
-  
-
 
   return (
     // <div className="">

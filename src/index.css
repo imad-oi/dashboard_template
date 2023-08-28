@@ -16,7 +16,7 @@
     px-4 rounded-md focus:outline-none hover:bg-slate-300  focus:ring-gray-500;
   } */
   .card {
-    @apply min-w-[300px] bg-white rounded-lg shadow-lg py-4 px-6  hover:ring-2 hover:ring-gray-200;
+    @apply min-w-[300px] bg-white dark:bg-dark-purple dark:text-white rounded-lg shadow-lg py-4 px-6  hover:ring-2 hover:ring-gray-200;
   }
   .card-title {
     @apply text-2xl font-semibold text-gray-700;
@@ -33,6 +33,9 @@
   .input-primary{
     @apply h-8 rounded-md  w-full px-2 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500  text-sm text-slate-500;
   }
+  .label{
+    @apply font-semibold dark:text-white
+  }
   .textarea{
     @apply h-16 rounded-md  w-full p-2 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400  text-sm text-slate-500;
   }
@@ -46,4 +49,18 @@
   background-size: cover;
   background-clip: border-box;
   /* background-attachment: fixed; */
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #081a5161;
+  border-radius: 6px;
 }

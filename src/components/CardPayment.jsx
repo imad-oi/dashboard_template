@@ -6,9 +6,9 @@ import Button from "./Button";
 const CardPayment = () => {
   return (
     <div className="ring-1 w-full ring-slate-300 rounded-md p-4">
-      <div className="flex flex-col items-start mb-5">
-        <p className="font-medium">Payment Method</p>
-        <p className="text-sm ">Add a new payment method to your account</p>
+      <div className="flex flex-col items-start mb-5 dark:text-white">
+        <p className="font-medium ">Payment Method</p>
+        <p className="text-sm  ">Add a new payment method to your account</p>
       </div>
       <div className="flex flex-row justify-between space-x-3">
         <div className="flex w-1/3 flex-col items-center py-3 ring-black hover:bg-gray-200 ring-1 rounded-md">
@@ -25,7 +25,7 @@ const CardPayment = () => {
         </div>
       </div>
       <div className="my-4 space-y-2">
-        <label htmlFor="cardName">Name</label>
+        <label className="label" htmlFor="cardName">Name</label>
         <Input placeholder={"Complete Name: First Last"} />
       </div>
       <div className="w-full">

@@ -28,7 +28,9 @@ const Card = () => {
         </div>
       </div>
       <div className="flex justify-between py-3 mt-1">
-        <Button Class={"btn-secondary"} text={"Cancel"} />
+        <div>
+          <Button Class={"btn-secondary"} text={"Cancel"} />
+        </div>
         <div>
           <Button Class={"btn-primary"} text={"Deploy"} />
         </div>

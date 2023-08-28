@@ -3,15 +3,14 @@ import Input from "../components/Input";
 
 const Auth = () => {
   return (
-    <div
-     className="flex justify-center items-center bg-slate-400 w-full flex-1 auth">
+    <div className="flex justify-center items-center bg-slate-400 w-full flex-1 auth">
       <div className="card w-1/3">
         <div className="py-2">
-          <p className="text-xl font-semibold">Create and account</p>
+          <p className="text-xl font-semibold">Create an account</p>
         </div>
         <div className="py-1 space-y-6">
           <div className="flex flex-col justify-between items-start space-y-1">
-            <label htmlFor="name" className="font-semibold text-gray-700">
+            <label htmlFor="name" className="font-semibold text-gray-700 label">
               Name
             </label>
             <Input
@@ -22,7 +21,10 @@ const Auth = () => {
           </div>
 
           <div className="flex flex-col justify-between items-start space-y-1">
-            <label htmlFor="email" className="font-semibold text-gray-700">
+            <label
+              htmlFor="email"
+              className="font-semibold text-gray-700 label"
+            >
               Email
             </label>
             <Input

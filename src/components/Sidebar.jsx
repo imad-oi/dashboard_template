@@ -16,7 +16,7 @@ export default function Sidebar() {
     { url: "/dashboard", title: "Dashboard", src: "Chart_fill" },
     { url: "/", title: "Inbox", src: "Chat" },
     { url: "/auth", title: "Authentication", src: "User", gap: true },
-    { url: "/", title: "Schedule ", src: "Calendar" },
+    { url: "/pages", title: "Pages ", src: "Calendar" },
     { url: "/", title: "Search", src: "Search" },
     { url: "/", title: "Analytics", src: "Chart" },
     { url: "/components", title: "Components ", src: "Folder", gap: true },
