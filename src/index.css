@@ -2,3 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 w-full
+    px-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  .btn-secondary {
+    @apply bg-slate-50 hover:bg-slate-200 text-slate-600 font-semibold py-1 w-full
+    px-2 rounded focus:outline-none ring-slate-300 ring-1 ;
+  }
+  /* .btn-secondary {
+    @apply  text-gray-700 font-semibold   py-2 border border-gray-300
+    px-4 rounded-md focus:outline-none hover:bg-slate-300  focus:ring-gray-500;
+  } */
+  .card {
+    @apply min-w-[300px] bg-white rounded-lg shadow-lg py-4 px-6  hover:ring-2 hover:ring-gray-200;
+  }
+  .card-title {
+    @apply text-2xl font-semibold text-gray-700;
+  }
+  .card-body {
+    @apply text-gray-600;
+  }
+  .card-footer {
+    @apply flex justify-end mt-4;
+  }
+  .input{
+    @apply h-8 rounded-md  w-full px-2 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400  text-sm text-slate-500;
+  }
+  .input-primary{
+    @apply h-8 rounded-md  w-full px-2 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500  text-sm text-slate-500;
+  }
+  .textarea{
+    @apply h-16 rounded-md  w-full p-2 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400  text-sm text-slate-500;
+  }
+}
+
+
+.auth{
+  background-image: url(https://cdn.pixabay.com/photo/2023/08/22/21/18/mountain-8207212_1280.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: border-box;
+  /* background-attachment: fixed; */
+}

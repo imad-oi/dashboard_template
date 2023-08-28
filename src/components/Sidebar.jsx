@@ -1,102 +1,101 @@
-import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react"
-import { createContext, useContext, useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+const control = "./src/assets/control.png";
 
-const SidebarContext = createContext()
+export default function Sidebar() {
+  const [openSidebar, setopenSidebar] = useState(true);
+  const [selcted, setSelcted] = useState(0);
 
-export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true)
-  
+  const router = useNavigate();
+  const handleRoute = (url,index) => {
+    setSelcted(index);
+    router(url);
+  };
+
+  const menus = [
+    { url: "/dashboard", title: "Dashboard", src: "Chart_fill" },
+    { url: "/", title: "Inbox", src: "Chat" },
+    { url: "/auth", title: "Authentication", src: "User", gap: true },
+    { url: "/", title: "Schedule ", src: "Calendar" },
+    { url: "/", title: "Search", src: "Search" },
+    { url: "/", title: "Analytics", src: "Chart" },
+    { url: "/components", title: "Components ", src: "Folder", gap: true },
+    { url: "/Setting", title: "Setting", src: "Setting" },
+  ];
+
   return (
-    <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
-          <img
-            src="https://img.logoipsum.com/243.svg"
-            className={`overflow-hidden transition-all ${
-              expanded ? "w-32" : "w-0"
-            }`}
-            alt=""
-          />
-          <button
-            onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
-          >
-            {expanded ? <ChevronFirst /> : <ChevronLast />}
-          </button>
-        </div>
-
-        <SidebarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3">{children}</ul>
-        </SidebarContext.Provider>
-
-        <div className="border-t flex p-3">
-          <img
-            src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
-            alt=""
-            className="w-10 h-10 rounded-md"
-          />
-          <div
-            className={`
-              flex justify-between items-center
-              overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}
-          `}
-          >
-            <div className="leading-4">
-              <h4 className="font-semibold">John Doe</h4>
-              <span className="text-xs text-gray-600">johndoe@gmail.com</span>
-            </div>
-            <MoreVertical size={20} />
-          </div>
-        </div>
-      </nav>
-    </aside>
-  )
-}
-
-export function SidebarItem({ icon, text, active, alert }) {
-  const { expanded } = useContext(SidebarContext)
-  
-  return (
-    <li
-      className={`
-        relative flex items-center py-2 px-3 my-1
-        font-medium rounded-md cursor-pointer
-        transition-colors group
-        ${
-          active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
-        }
-    `}
+    <div
+      className={` ${
+        openSidebar ? "w-72" : "w-20"
+      } h-screen p-5 pt-8  bg-dark-purple relative duration-500 `}
     >
-      {icon}
-      <span
-        className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
-        }`}
-      >
-        {text}
-      </span>
-      {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
-            expanded ? "" : "top-2"
+      <img
+        onClick={() => setopenSidebar((prev) => !prev)}
+        src={control}
+        alt="control"
+        className={`absolute cursor-pointer rounded-full 
+      -right-3 top-10 border-2 border-dark-purple  w-6 h-6
+      ${!openSidebar && "rotate-180 duration-75"}
+      `}
+      />
+
+      <div className="flex gap-x-4 items-center">
+        <img
+          src="./src/assets/logo.png"
+          alt="logo"
+          className={`cursor-pointer duration-500 ${
+            !openSidebar && "rotate-[360deg]"
           }`}
         />
-      )}
-
-      {!expanded && (
-        <div
-          className={`
-          absolute left-full rounded-md px-2 py-1 ml-6
-          bg-indigo-100 text-indigo-800 text-sm
-          invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
-      `}
+        <h1
+          className={`text-white origin-left 
+        font-medium  text-xl duration-300 ${!openSidebar && "scale-0 hidden"}}`}
         >
-          {text}
+          ByteBinders
+        </h1>
+      </div>
+
+      <ul className="pt-6 ">
+        {menus.map((menu, index) => (
+          <>
+            <li
+              onClick={() => handleRoute(menu.url,index)}
+              key={index}
+              className={`text-gray-300 text-sm flex items-center
+         gap-x-4 cursor-pointer p-2 hover:bg-light-white 
+         rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${
+                selcted === index && "bg-light-white"
+              }`}
+            >
+              <img src={`./src/assets/${menu.src}.png`} />
+              <span
+                className={`${
+                  !openSidebar && "hidden"
+                } origin-left duration-200`}
+              >
+                {menu.title}
+              </span>
+            </li>
+          </>
+        ))}
+      </ul>
+
+      <div
+        className={`flex justify-start items-center gap-x-2 duration-500
+    ${
+      openSidebar && "bg-light-white p-4"
+    }  h-16 w-60 rounded-md absolute bottom-4`}
+      >
+        <img src="./src/assets/logo.png" alt="profile" />
+        <div
+          className={`text-gray-300 text-sm flex flex-col ${
+            !openSidebar && "hidden"
+          }`}
+        >
+          <span className="font-semibold">Jhon Doe</span>
+          <span>Jhon@Doe.com</span>
         </div>
-      )}
-    </li>
-  )
+      </div>
+    </div>
+  );
 }

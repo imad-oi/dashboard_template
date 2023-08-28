@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const control = "./src/assets/control.png";
 
@@ -7,108 +8,24 @@ function App() {
 
   const [isDarkMode, setisDarkMode] = useState(false);
 
-  const menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Inbox", src: "Chat" },
-    { title: "Accounts", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "Search", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Files ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
-  ];
+  
+
+
   return (
-    <div className="flex">
-      <div
-        className={` ${
-          openSidebar ? "w-72" : "w-20"
-        } h-screen p-5 pt-8  bg-dark-purple relative duration-500 `}
-      >
-        <img
-          onClick={() => setopenSidebar((prev) => !prev)}
-          src={control}
-          alt="control"
-          className={`absolute cursor-pointer rounded-full 
-          -right-3 top-10 border-2 border-dark-purple  w-6 h-6
-          ${!openSidebar && "rotate-180 duration-75"}
-          `}
-        />
-
-        <div className="flex gap-x-4 items-center">
-          <img
-            src="./src/assets/logo.png"
-            alt="logo"
-            className={`cursor-pointer duration-500 ${
-              !openSidebar && "rotate-[360deg]"
-            }`}
-          />
-          <h1
-            className={`text-white origin-left 
-            font-medium  text-xl duration-300 ${
-              !openSidebar && "scale-0 hidden"
-            }}`}
-          >
-            ByteBinders
-          </h1>
-        </div>
-
-        <ul className="pt-6 ">
-          {menus.map((menu, index) => (
-            <>
-              <li
-                key={index}
-                className={`text-gray-300 text-sm flex items-center
-             gap-x-4 cursor-pointer p-2 hover:bg-light-white 
-             rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${
-                  index === 0 && "bg-light-white"
-                }`}
-              >
-                <img src={`./src/assets/${menu.src}.png`} />
-                <span
-                  className={`${
-                    !openSidebar && "hidden"
-                  } origin-left duration-200`}
-                >
-                  {menu.title}
-                </span>
-              </li>
-            </>
-          ))}
-        </ul>
-
-        <div
-          className={`flex justify-start items-center gap-x-2 duration-500
-        ${
-          openSidebar && "bg-light-white p-4"
-        }  h-16 w-60 rounded-md absolute bottom-4`}
-        >
-          <img src="./src/assets/logo.png" alt="profile" />
-          <div
-            className={`text-gray-300 text-sm flex flex-col ${
-              !openSidebar && "hidden"
-            }`}
-          >
-            <span className="font-semibold">Jhon Doe</span>
-            <span>Jhon@Doe.com</span>
-          </div>
-        </div>
-      </div>
-
+    // <div className="">
       <div
         className={`p-7 text-2xl flex flex-col gap-y-4 font-semibold flex-1 h-screen overflow-y-scroll ${
-          !isDarkMode && "bg-black"
+          isDarkMode && "bg-black"
         } `}
       >
         <div
-          className={`h-10 w-full flex justify-end ${
-            !isDarkMode && "bg-black"
-          }`}
+          className={`h-10 w-full flex justify-end `}
         >
           <button
             className="bg-blue-300 text-white text-sm font-semibold rounded-md px-4 py-2"
             onClick={() => setisDarkMode((prev) => !prev)}
           >
-            {!isDarkMode ? "Light Mode" : "Dark Mode"}
+            {!isDarkMode ? "Dark Mode" : "Light Mode"}
           </button>
         </div>
 
@@ -148,7 +65,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 
